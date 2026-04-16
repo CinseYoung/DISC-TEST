@@ -6,7 +6,7 @@
 
 - **前端**：React 18 + TypeScript + Vite 5 + Tailwind CSS 3
 - **后端**：Supabase (PostgreSQL + Realtime)
-- **部署**：EdgeOne Pages
+- **部署**：Vercel
 
 ## 快速开始
 
@@ -60,12 +60,23 @@ npm run dev
 
 ## 部署
 
-构建生产版本：
+本项目部署在 [Vercel](https://vercel.com/)。
+
+### 手动构建
 
 ```bash
 npm run build
 ```
 
-产物位于 `dist/` 目录，可部署到 EdgeOne Pages 或其他静态托管平台。
+产物位于 `dist/` 目录。
 
-> **注意**：部署时需要在平台的环境变量配置中设置 `VITE_SUPABASE_URL` 和 `VITE_SUPABASE_ANON_KEY`。
+### Vercel 部署步骤
+
+1. 在 [Vercel](https://vercel.com/) 导入本项目的 Git 仓库
+2. Framework Preset 选择 **Vite**
+3. 在 **Settings → Environment Variables** 中配置以下环境变量：
+   - `VITE_SUPABASE_URL`：Supabase 项目 URL
+   - `VITE_SUPABASE_ANON_KEY`：Supabase anon public key
+4. 部署完成后，后续每次推送到主分支将自动触发部署
+
+> **注意**：由于项目使用了客户端路由，Vercel 会自动处理 SPA 的路由回退，无需额外配置。
